@@ -9,12 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Range.lessThan;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class CreateAnAccount {
 //    @FindBy (name = "id_gender1")
@@ -76,6 +78,7 @@ public class CreateAnAccount {
         PageFactory.initElements(driver, this );
     }
     public void fillInRegistrationForm (String firstname, String lastName, String password, String company, String address, String address2, String city, String postcode, String otherInformation,String homePhone,String phoneNumber, String adressReferences){
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(visibilityOf(submitAccountButton));
         firstNameInput.sendKeys(firstname);
         lastNameInput.sendKeys(lastName);
         passwordinput.sendKeys(password);
@@ -91,10 +94,12 @@ public class CreateAnAccount {
     }
 
     public void setGender (String gender){
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(visibilityOf(submitAccountButton));
         if(gender.equalsIgnoreCase("mr."))
             selectGender.get(0).click();
         else if (gender.equalsIgnoreCase("mrs."))
             selectGender.get(1).click();
+
     }
 
     public void selectDayOfBirth(String value){
@@ -107,12 +112,10 @@ public class CreateAnAccount {
     }
     public void selectYearOfBirth(String year){
         Select drop = new Select(yearOfBirthDropdown);
-
         if (Integer.parseInt(year) <= 2003) {
-
             drop.selectByValue(year);
-
-        } else {
+        }
+        else {
             assertThat(Integer.parseInt(year), is(lessThan(2004)));
         }
     }

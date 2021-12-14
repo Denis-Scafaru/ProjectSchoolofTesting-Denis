@@ -5,11 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.URL;
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class SignInPage {
     @FindBy (id="email_create")
@@ -22,7 +24,7 @@ public class SignInPage {
     public WebElement emailError;
 
     protected WebDriver driver;
-    protected WebDriverWait wait;
+    public WebDriverWait wait;
 
     public SignInPage(WebDriver driver){
         this.driver = driver;
@@ -36,6 +38,7 @@ public class SignInPage {
     public CreateAnAccount redirectPage(){
         submitButton.click();
         return new CreateAnAccount(driver);
+
     }
     public String EmailError(){
         return emailError.getText();
