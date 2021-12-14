@@ -118,7 +118,7 @@ public class NewProjectTest {
         assertThat(driver.getCurrentUrl(), is("http://automationpractice.com/index.php?controller=my-account"));
     }
     @Test
-    public void signInContact18Year(){
+    public void signInContactUnder18Year(){
         driver.manage().window().maximize();
         HomePageAutomation homePage = new HomePageAutomation(driver);
         String email = StringHelper.generateRandomEmail();
