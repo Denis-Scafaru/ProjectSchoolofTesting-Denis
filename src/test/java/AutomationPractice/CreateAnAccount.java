@@ -113,10 +113,9 @@ public class CreateAnAccount {
     public void selectYearOfBirth(String year){
         Select drop = new Select(yearOfBirthDropdown);
         if (Integer.parseInt(year) <= 2003) {
-            drop.selectByValue(year);
+            drop.selectByVisibleText(year);
         }
         else {
-            assertThat(Integer.parseInt(year), is(lessThan(2004)));
         }
     }
     public void selectNewsletterCheckBox(){

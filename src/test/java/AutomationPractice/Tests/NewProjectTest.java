@@ -137,15 +137,15 @@ public class NewProjectTest {
         completeAccountFields.selectOfferCheckBox();
         completeAccountFields.selectState("Arizona");
         completeAccountFields.submitAccountButton.click();
-        assertThat(driver.getCurrentUrl(), is("http://automationpractice.com/index.php?controller=my-account"));
+        assertThat(completeAccountFields.getResultError(), is ("There is 1 error\n" + "Invalid date of birth"));
 
     }
 
-    @AfterEach
-
-    public void tearDown(){
-        driver.quit();
-    }
+//    @AfterEach
+//
+//    public void tearDown(){
+//        driver.quit();
+//    }
 
 
 
