@@ -61,7 +61,7 @@ public class NewProjectTest {
         createAccount.enterEmail(email);
         CreateAnAccount completeAccountFields = createAccount.redirectPage();
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(urlToBe("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation"));
-        completeAccountFields.setSelectCountry("-");
+        //completeAccountFields.setSelectCountry("-");
 
         completeAccountFields.submitAccountButton.click();
         assertThat(completeAccountFields.getResultError(), is ("There are 8 errors\n" +
@@ -77,13 +77,12 @@ public class NewProjectTest {
     }
 
     @Test
-    public void CheckPostCode(){
+    public void CheckPostCodeState(){
         driver.manage().window().maximize();
         HomePageAutomation homePage = new HomePageAutomation(driver);
         String email = StringHelper.generateRandomEmail();
         SignInPage createAccount = homePage.goToSignInPage();
         createAccount.enterEmail(email);
-        //new WebDriverWait(driver, 10).until(elementToBeClickable(By.id("SubmitCreate"))).click();
         CreateAnAccount completeAccountFields = createAccount.redirectPage();
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(urlToBe("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation"));
 
@@ -92,14 +91,15 @@ public class NewProjectTest {
         completeAccountFields.fillInRegistrationForm("Denis", "Scafaru","1234567", "Endava","Sf Ap Petru si Pavel, 320, 230","Sf Ap Petru si Pavel, 320, 230", "Timisoara", "90264","none","02562221372","0730235828","Sf Ap Petru si Pavel");
         completeAccountFields.selectDayOfBirth("23");
         completeAccountFields.selectMonthOfBirth("10");
-        completeAccountFields.selectYearOfBirth("2010");
+        completeAccountFields.selectYearOfBirth("2000");
         completeAccountFields.selectNewsletterCheckBox();
         completeAccountFields.selectOfferCheckBox();
-        completeAccountFields.selectState("3");
+        completeAccountFields.selectState("Arizona");
         completeAccountFields.setSelectCountry("-");
         completeAccountFields.submitAccountButton.click();
         //assertTrue(completeAccountFields.postalCodeInput.isDisplayed());
         assertFalse(completeAccountFields.postalCodeInput.isDisplayed());
+        assertFalse(completeAccountFields.americaStateDropDown.isDisplayed());
 
 
     }
@@ -122,7 +122,6 @@ public class NewProjectTest {
         completeAccountFields.selectNewsletterCheckBox();
         completeAccountFields.selectOfferCheckBox();
         completeAccountFields.selectState("Arizona");
-        completeAccountFields.setSelectCountry("UnitedState");
         completeAccountFields.submitAccountButton.click();
         assertThat(driver.getCurrentUrl(), is("http://automationpractice.com/index.php?controller=my-account"));
 
@@ -146,7 +145,7 @@ public class NewProjectTest {
 
         completeAccountFields.selectNewsletterCheckBox();
         completeAccountFields.selectOfferCheckBox();
-        completeAccountFields.selectState("3");
+        completeAccountFields.selectState("Arizona");
         //completeAccountFields.setSelectCountry("UnitedState");
         completeAccountFields.submitAccountButton.click();
         assertThat(driver.getCurrentUrl(), is("http://automationpractice.com/index.php?controller=my-account"));

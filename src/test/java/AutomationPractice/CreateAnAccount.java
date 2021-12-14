@@ -68,8 +68,7 @@ public class CreateAnAccount {
     public WebElement otherInfo;
     @FindBy(xpath = "//*[contains(@class, 'alert alert-danger')][1]")
     public WebElement errorMessages;
-    @FindBy(xpath = "//li[contains(text(),'Invalid date of birth')]")
-    public WebElement invalidErrorDateofBirth;
+
 
     protected WebDriver driver;
     public CreateAnAccount(WebDriver driver){
@@ -108,8 +107,6 @@ public class CreateAnAccount {
     }
     public void selectYearOfBirth(String year){
         Select drop = new Select(yearOfBirthDropdown);
-
-        assertThat(Integer.parseInt(year), is(lessThan(2004)));
 
         if (Integer.parseInt(year) <= 2003) {
 
