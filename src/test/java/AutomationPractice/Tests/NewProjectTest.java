@@ -95,7 +95,7 @@ public class NewProjectTest {
 
         completeAccountFields.setGender("mr.");
         completeAccountFields.fillInRegistrationForm("Denis", "Scafaru","1234567", "Endava","Sf Ap Petru si Pavel, 320, 230","Sf Ap Petru si Pavel, 320, 230", "Timisoara", "90264","none","02562221372","0730235828","Sf Ap Petru si Pavel");
-        completeAccountFields.selectDayOfBirth("23");
+        completeAccountFields.selectDayOfBirth("24");
         completeAccountFields.selectMonthOfBirth("10");
         completeAccountFields.selectYearOfBirth("2000");
         completeAccountFields.selectNewsletterCheckBox();
