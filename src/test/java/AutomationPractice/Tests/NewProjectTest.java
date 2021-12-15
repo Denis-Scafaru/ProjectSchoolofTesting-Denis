@@ -4,6 +4,7 @@ import AutomationPractice.CreateAnAccount;
 import AutomationPractice.HomePageAutomation;
 import AutomationPractice.SignInPage;
 import helpers.StringHelper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -35,10 +36,9 @@ public class NewProjectTest {
         HomePageAutomation homePage = new HomePageAutomation(driver);
         SignInPage createAccount = homePage.goToSignInPage();
 
-        new WebDriverWait(driver, 10).until(elementToBeClickable(By.id("email_create")));
-        createAccount.emailinput.sendKeys("calutu");
+        createAccount.enterEmail("calutu");
         createAccount.submitButton.click();
-        new WebDriverWait(driver, 20).until(visibilityOf(createAccount.emailError));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(createAccount.emailError));
         assertThat(createAccount.emailError.getText(), is ("Invalid email address."));
 
     }
@@ -104,8 +104,8 @@ public class NewProjectTest {
         completeAccountFields.selectState("Arizona");
         completeAccountFields.setSelectCountry("-");
         completeAccountFields.submitAccountButton.click();
-        //assertTrue(completeAccountFields.postalCodeInput.isDisplayed());
-        assertFalse(completeAccountFields.postalCodeInput.isDisplayed());
+        assertTrue(completeAccountFields.postalCodeInput.isDisplayed());
+        //assertFalse(completeAccountFields.postalCodeInput.isDisplayed());
 //        assertFalse(completeAccountFields.americaStateDropDown.isDisplayed());
 
 
@@ -178,11 +178,11 @@ public class NewProjectTest {
         assertThat(driver.getCurrentUrl(), is("http://automationpractice.com/index.php?controller=my-account"));
     }
 
-//    @AfterEach
-//
-//    public void tearDown(){
-//        driver.quit();
-//    }
+    @AfterEach
+
+    public void tearDown(){
+        driver.quit();
+    }
 
 
 

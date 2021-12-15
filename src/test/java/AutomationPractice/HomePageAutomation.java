@@ -21,4 +21,8 @@ public class HomePageAutomation {
         return new SignInPage(driver);
 
     }
+
+    public void SubmitButton(){
+        signInButton.click();
+    }
 }
