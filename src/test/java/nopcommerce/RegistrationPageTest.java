@@ -80,7 +80,7 @@ public class RegistrationPageTest {
         HomePage homePage = new HomePage(driver);
         driver.manage().window().maximize();
         buildYourOwnComputer computer = homePage.gotobuildYourOwnComputer();
-        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOfAllElements(computer.dropDownRam));
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfAllElements(computer.dropDownRam));
 
         computer.addRam("1");
         computer.HDD320.click();

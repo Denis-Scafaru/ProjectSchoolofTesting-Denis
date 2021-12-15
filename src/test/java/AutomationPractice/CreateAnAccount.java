@@ -70,6 +70,8 @@ public class CreateAnAccount {
     public WebElement otherInfo;
     @FindBy(xpath = "//*[contains(@class, 'alert alert-danger')][1]")
     public WebElement errorMessages;
+    @FindBy (xpath = "//p[contains(text(),'You must register at least one phone number.')]")
+    private WebElement phoneError;
 
 
     protected WebDriver driver;
@@ -117,9 +119,9 @@ public class CreateAnAccount {
         }
         else {
             System.out.println("Year should be 2003 or less");
-
         }
     }
+
     public void selectNewsletterCheckBox(){
         if (!newslettercheckbox.isSelected())
             newslettercheckbox.click();
@@ -139,6 +141,9 @@ public class CreateAnAccount {
     public String getResultError() {
         return errorMessages.getText();
 
+    }
+    public String getPhoneError(){
+        return phoneError.getText();
     }
 }
 
