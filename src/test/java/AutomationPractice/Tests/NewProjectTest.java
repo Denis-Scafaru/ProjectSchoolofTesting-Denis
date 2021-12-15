@@ -54,15 +54,16 @@ public class NewProjectTest {
         completeAccountFields.setSelectCountry("-");
 
         completeAccountFields.submitAccountButton.click();
-        assertThat(completeAccountFields.getResultError(), is ("There are 8 errors\n" +
+        assertThat(completeAccountFields.getResultError(), is ("There are 9 errors\n" +
                 "You must register at least one phone number.\n" +
                 "lastname is required.\n" +
                 "firstname is required.\n" +
                 "passwd is required.\n" +
+                "id_country is required.\n" +
                 "address1 is required.\n" +
                 "city is required.\n" +
-                "The Zip/Postal code you've entered is invalid. It must follow this format: 00000\n" +
-                "This country requires you to choose a State."));
+                "Country cannot be loaded with address->id_country\n" +
+                "Country is invalid"));
     }
     @Test
     public void CheckPhoneErrorMessage() {
