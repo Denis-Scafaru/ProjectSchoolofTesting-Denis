@@ -105,8 +105,6 @@ public class NewProjectTest {
         completeAccountFields.setSelectCountry("-");
         completeAccountFields.submitAccountButton.click();
         assertTrue(completeAccountFields.postalCodeInput.isDisplayed());
-        //assertFalse(completeAccountFields.postalCodeInput.isDisplayed());
-//        assertFalse(completeAccountFields.americaStateDropDown.isDisplayed());
 
 
     }
