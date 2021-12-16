@@ -7,7 +7,6 @@ import helpers.StringHelper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,7 +37,7 @@ public class NewProjectTest {
 
         createAccount.enterEmail("calutu");
         createAccount.submitButton.click();
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(createAccount.emailError));
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(createAccount.emailError));
         assertThat(createAccount.emailError.getText(), is ("Invalid email address."));
 
     }
@@ -50,7 +49,7 @@ public class NewProjectTest {
         SignInPage createAccount = homePage.goToSignInPage();
         createAccount.enterEmail(email);
         CreateAnAccount completeAccountFields = createAccount.redirectPage();
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(urlToBe("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation"));
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(urlToBe("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation"));
         completeAccountFields.setSelectCountry("-");
 
         completeAccountFields.submitAccountButton.click();
@@ -175,13 +174,14 @@ public class NewProjectTest {
         completeAccountFields.submitAccountButton.click();
         assertThat(driver.getCurrentUrl(), is("http://automationpractice.com/index.php?controller=my-account"));
     }
-
-    @AfterEach
-
-    public void tearDown(){
-        driver.quit();
-    }
-
-
-
 }
+
+//    @AfterEach
+//
+//    public void tearDown(){
+//        driver.quit();
+//    }
+//
+//
+//
+//}

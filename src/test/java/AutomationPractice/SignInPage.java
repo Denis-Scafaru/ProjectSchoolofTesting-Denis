@@ -32,10 +32,11 @@ public class SignInPage {
     }
     public void enterEmail (String email) {
 
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(elementToBeClickable(emailinput));
+        new WebDriverWait(driver, Duration.ofSeconds(40)).until(elementToBeClickable(emailinput));
         emailinput.sendKeys(email);
     }
     public CreateAnAccount redirectPage(){
+        new WebDriverWait(driver, Duration.ofSeconds(40)).until(elementToBeClickable(submitButton));
         submitButton.click();
         return new CreateAnAccount(driver);
 

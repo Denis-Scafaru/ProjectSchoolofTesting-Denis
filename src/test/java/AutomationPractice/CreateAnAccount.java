@@ -96,7 +96,7 @@ public class CreateAnAccount {
     }
 
     public void setGender (String gender){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(visibilityOf(submitAccountButton));
+        new WebDriverWait(driver, Duration.ofSeconds(40)).until(visibilityOf(submitAccountButton));
         if(gender.equalsIgnoreCase("mr."))
             selectGender.get(0).click();
         else if (gender.equalsIgnoreCase("mrs."))
